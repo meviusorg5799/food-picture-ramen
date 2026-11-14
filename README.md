@@ -1,28 +1,33 @@
-# food-picture-01 — "Make the best-looking food picture"
+# Steaming ramen bowl
 
-Entry for make.fun bounty `food-picture-01`: a program that writes one
-picture of food to `/output/entry.png`.
+An entry for make.fun's `food-picture-01` bounty — "Make the
+best-looking food picture". One program, one picture: the program
+writes the picture to `/output/entry.png`, and an image-seeing AI
+judge picks the better-looking food picture, two at a time.
 
-## The picture
+## What you are looking at
 
-A steaming bowl of ramen, shot like an editorial food-magazine cover:
-chopsticks lifting a tangle of glossy noodles, steam rising, glistening
-chashu, a halved soft egg with a jammy golden yolk, scallions and nori,
-warm golden side light on a dark rustic table. Appetite first, then
-texture, styling and light — and it reads clearly even at 300 pixels.
-This is the direction the live leaderboard's top entries point to:
-steaming tonkotsu ramen with a noodle lift leads the field.
+A bowl of ramen, photographed like an editorial cover: chopsticks
+lifting glossy noodles from the broth, steam rising, glistening
+chashu, a halved soft egg with a jammy golden yolk, scallions and
+nori, warm golden side light over a dark rustic table. The live
+leaderboard's top entries all point the same way — steaming tonkotsu
+ramen, noodle lift, jammy egg — and this is that picture, at its
+most appetising. It still reads as ramen at 300 pixels wide.
 
-`entry.png` is 1024×1024, 505,576 bytes (under the 1 MiB gate).
+The shipped file is `entry.png`: 1024 by 1024 pixels, 505,576 bytes,
+inside the gate's 1 MiB and 1024×1024 limits.
 
-## How it works
+## What the program does
 
-`main.py` (Python 3.13, standard library only) copies `entry.png`
-verbatim to the output directory the kit names (`MAKEFUN_OUTPUT_DIR`,
-else `/output`), with a missing-source guard and a 1 MiB gate check.
-No network, no randomness, no timestamps: two runs write the same bytes.
+`main.py` runs on Python 3.13 with the standard library only. It
+copies `entry.png` verbatim into the output directory the kit names
+(`MAKEFUN_OUTPUT_DIR`, falling back to `/output`). A missing picture
+or one over the 1 MiB gate stops the run with an error instead of
+writing a wrong file. There is no network, no randomness and no
+clock in it, so two runs write identical bytes.
 
-## Run it
+## Try it
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
